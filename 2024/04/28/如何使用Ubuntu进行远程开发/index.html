@@ -9,7 +9,7 @@
     
     <title>
         
-            对称加密和非对称加密，可逆加密与不可逆加密 |
+            如何使用Ubuntu进行远程开发 |
         
         Fishman的小池塘
     </title>
@@ -239,7 +239,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        对称加密和非对称加密，可逆加密与不可逆加密
+                        如何使用Ubuntu进行远程开发
                     </div>
                 
 
@@ -267,24 +267,52 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-star"></i>&nbsp;
-                <span class="datetime">2024 年 04 月 27 日 22:19:14</span>
+                <span class="datetime">2024 年 04 月 28 日 21:56:17</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Apr 27 2024 22:19:14 GMT+0800">2024 年 04 月 27 日 22:19:14</span>
+                <span class="datetime" data-updated="Mon Apr 29 2024 00:38:53 GMT+0800">2024 年 04 月 29 日 00:38:53</span>
             </span>
         
 
         
-
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Ubuntu/">Ubuntu</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Vmware/">Vmware</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Ubuntu/">Ubuntu</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/java/">java</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>590 字</span>
+            </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
             </span>
         
         
@@ -305,7 +333,202 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    
+                    <h1 id="使用Ubuntu进行远程开发"><a href="#使用Ubuntu进行远程开发" class="headerlink" title="使用Ubuntu进行远程开发"></a>使用Ubuntu进行远程开发</h1><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ol>
+<li>Vmware player虚拟机：这个是官网下载地址 <a class="link"   target="_blank" rel="noopener" href="https://customerconnect.vmware.com/en/downloads/details?downloadGroup=WKST-PLAYER-1751&productId=1377&rPId=117008" >https://customerconnect.vmware.com/en/downloads/details?downloadGroup=WKST-PLAYER-1751&amp;productId=1377&amp;rPId=117008<i class="fas fa-external-link-alt"></i></a>  （虽然我是16Pro，不过问题应该不大）</li>
+</ol>
+<p>下载完成以后安装即可，怎么安装就看这篇文章：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53568983/article/details/133010586" >VMware Workstation Player 17 下载安装教程_vmware 社区版-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+<ol start="2">
+<li>下载Ubuntu</li>
+</ol>
+<p>这是官网地址：<a class="link"   target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop" >Download Ubuntu Desktop | Ubuntu<i class="fas fa-external-link-alt"></i></a></p>
+<p>我建议用国内镜像更快一点，这是阿里的：<a class="link"   target="_blank" rel="noopener" href="https://mirrors.aliyun.com/ubuntu-releases/22.04/" >https://mirrors.aliyun.com/ubuntu-releases/22.04/<i class="fas fa-external-link-alt"></i></a></p>
+
+
+<p>下载完以后就准备进入Vmware进行安装了</p>
+<ol start="3">
+<li>安装Ubuntu</li>
+</ol>
+<p>安装分两种方法，一种是Vmware的简易安装，另一种是基于安装包的原始安装，我这里是用VM进行简易安装</p>
+<p>如果你是英文界面，可以先这样设置</p>
+<p>找到桌面的VM快捷方式，右键点击属性，把快捷方式的目标后面加上</p>
+<p>–locale ZH_CN</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429001659830.png"
+                        class=""
+                 >
+
+<p>这是我的地址</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-name">D</span>:\Vmware\vmware.exe <span class="hljs-comment">--locale ZH_CN</span><br></code></pre></td></tr></table></figure>
+
+<p>改完以后重启虚拟机就行了，实在不行你就一步步跟着我看选就行</p>
+<p>在主页点击创建虚拟机</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429001006986.png"
+                        class=""
+                 >
+
+<p>选择自定义安装</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429001111210.png"
+                        class=""
+                 >
+
+<p>不用管，下一步</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429001750613.png"
+                        class=""
+                 >
+
+<p>找到你之前下载好的Ubuntu的ios镜像文件，VM会自动识别</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429001920875.png"
+                        class=""
+                 >
+
+<p>设置账户名和密码，点击下一步</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002030357.png"
+                        class=""
+                 >
+
+<p>这里可以修改你想要创建的虚拟机的位置</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002134101.png"
+                        class=""
+                 >
+
+<p>设置处理器核数</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002215636.png"
+                        class=""
+                 >
+
+<p>设置最大内存</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002252831.png"
+                        class=""
+                 >
+
+<p>添加网络类型，选错了可能导致你的虚拟机连不上网</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002345887.png"
+                        class=""
+                 >
+
+<p>选择控制器</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002422170.png"
+                        class=""
+                 >
+
+<p>选择磁盘类型</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002454897.png"
+                        class=""
+                 >
+
+<p>创建新磁盘</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002530235.png"
+                        class=""
+                 >
+
+<p>分配磁盘大小，并且把磁盘创建为单一文件（很重要）</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002641518.png"
+                        class=""
+                 >
+
+<p>不用管，下一步</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002718835.png"
+                        class=""
+                 >
+
+<p>勾选创建虚拟机就可以finish了</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429002811790.png"
+                        class=""
+                 >
+
+<p>然后进入Ubuntu的加载界面，等加载完成以后开始配置系统</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429003047139.png"
+                        class=""
+                 >
+
+<p>接着选好你的键盘布局</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429003131206.png"
+                        class=""
+                 >
+
+<p>然后选择正常安装，点击下一步，然后格式化磁盘，反正是虚拟的，随便造</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429003223745.png"
+                        class=""
+                 >
+
+<p>点继续</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429003337771.png"
+                        class=""
+                 >
+
+<p>配置你的系统密码和名字</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429003440526.png"
+                        class=""
+                 >
+
+<p>然后就是等待Ubuntu初始化完成即可</p>
+<h2 id="远程开发"><a href="#远程开发" class="headerlink" title="远程开发"></a>远程开发</h2><p>这里与两者方法，一种是远程部署，一种是基于IDEA的远程开发</p>
+<ol>
+<li>远程部署，就是把本地IDEA的文件放到Ubuntu上，每次更改就把本地同步到Ubuntu</li>
+</ol>
+
                 </div>
                 
                         
@@ -313,11 +536,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                对称加密和非对称加密，可逆加密与不可逆加密
+                如何使用Ubuntu进行远程开发
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/04/27/对称加密和非对称加密，可逆加密与不可逆加密/
+                2024/04/28/如何使用Ubuntu进行远程开发/
             </div>
         </div>
 
@@ -333,7 +556,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-04-27 22:19</div>
+                <div class="content">2024-04-28 21:56</div>
             </div>
 
 
@@ -365,6 +588,22 @@
 
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Vmware/">Vmware</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Ubuntu/">Ubuntu</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/java/">java</a>
+                                    </li>
+                                
+                            </ul>
                         
                     </div>
                     <div>
@@ -400,31 +639,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/04/27/%E5%AE%89%E8%A3%85Docker-Toolbox%E7%9A%84%E8%B8%A9%E5%9D%91/"
-                                   title="安装Docker Toolbox的踩坑"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">安装Docker Toolbox的踩坑</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/04/27/Git%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"
-                                   title="Git的安装与配置"
+                                   href="/2024/04/27/jdk%E9%87%8C%E9%9D%A2jconsole%E5%B0%8F%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                                   title="jdk里面jconsole小工具的使用"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Git的安装与配置</span>
+                                        <span class="post-nav-title-item text-ellipsis">jdk里面jconsole小工具的使用</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -536,7 +759,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">使用Ubuntu进行远程开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91"><span class="nav-number">1.2.</span> <span class="nav-text">远程开发</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -725,7 +948,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">使用Ubuntu进行远程开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91"><span class="nav-number">1.2.</span> <span class="nav-text">远程开发</span></a></li></ol></li></ol>
     </div>
 </div>
 

@@ -272,19 +272,41 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Apr 27 2024 22:21:21 GMT+0800">2024 年 04 月 27 日 22:21:21</span>
+                <span class="datetime" data-updated="Sun Apr 28 2024 21:28:51 GMT+0800">2024 年 04 月 28 日 21:28:51</span>
             </span>
         
 
         
-
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Daily/">Daily</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docker/">docker</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
+            </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
             </span>
         
         
@@ -305,7 +327,98 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    
+                    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>故事的起因是这样的：某天夜里，我突发奇想的想搭建一个个人网站，通过搜索了解一定知识以后，想从简单的入手，于是就选择了<a class="link"   target="_blank" rel="noopener" href="https://halo.run/" >Halo<i class="fas fa-external-link-alt"></i></a>，结果第一步<a class="link"   target="_blank" rel="noopener" href="https://docs.halo.run/getting-started/install/docker-compose/" >环境搭建<i class="fas fa-external-link-alt"></i></a>就把我干碎了！<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/cdd56a55c2704f06804bff515aec94bf.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<h1 id="1、Docker是什么？"><a href="#1、Docker是什么？" class="headerlink" title="1、Docker是什么？"></a>1、Docker是什么？</h1><p>我怎么知道？我就是一个纯纯小白。我点进了图片上的连接，进入了<a class="link"   target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/" >Docker官网<i class="fas fa-external-link-alt"></i></a>，凭借我一窍不通的英语水平找到了这个：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/f485f8e994ce4a06952cf59b8f80debd.png"
+                        alt="在这里插入图片描述"
+                 ><br>下载很顺利，安装也很顺利，结果启动给我难住了。启动页面一直在转圈，我只好询问万能的C友（CSDN上的朋友）。C友说要启动Docker Desktop要先打开Hyper-V，才能虚拟化。这个很简单，按一下window键直接搜索启用或关闭windows功能。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/7579901a8a174610b73e585f0d958c9b.png"
+                        alt="在这里插入图片描述"
+                 ><br>找到Hyper-V勾选，接着点适用于Linux的windows子系统，还有windows虚拟机监控平台，然后重启。。。。。。不出意外，还是不行。然后我把目光看向了Docker Toolbox。</p>
+<h1 id="2、Docker-Toolbox的艰难之旅"><a href="#2、Docker-Toolbox的艰难之旅" class="headerlink" title="2、Docker Toolbox的艰难之旅"></a>2、Docker Toolbox的艰难之旅</h1><h2 id="2-1Docker-Toolbox的镜像与安装"><a href="#2-1Docker-Toolbox的镜像与安装" class="headerlink" title="2.1	Docker Toolbox的镜像与安装"></a>2.1	Docker Toolbox的镜像与安装</h2><p>很不幸，关于Docker Toolbox能遇到的事几乎都被我遭了个遍！<br>首先就是Docker Toolbox的下载，我以为还是在Docker官网就能找到，于是我靠着我的半吊子英语在官网找了半天都没任何收获，好在C友还是很强大的让我去<a class="link"   target="_blank" rel="noopener" href="http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/" >阿里的镜像网站<i class="fas fa-external-link-alt"></i></a>找到了Docker Toolbox。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/8de43eec0bd6453b9059a21d94f52839.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p>短暂的等待安装完成以后，桌面上就是这三个图标<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/0efcd19787544eb589035e99878e8ba4.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<h2 id="2-2怎么找不到bash-exe了？"><a href="#2-2怎么找不到bash-exe了？" class="headerlink" title="2.2	怎么找不到bash.exe了？"></a>2.2	怎么找不到bash.exe了？</h2><p>问题马上就来！双击桌面快捷方式启动，好家伙，一点就是这个：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/aa81280811444cf59b8c38d0d9730661.png"
+                        alt="在这里插入图片描述"
+                 ><br>？？？发生什么事了？一来就是路径有问题？好在C友是万能的，原因是我之前就安装过Git了，导致Docker Toolbox安装的时候没找到Git的bash.exe。</p>
+<p>解决方法：</p>
+<p>右键点击桌面Docker Quickstart Terminal这个图标，点击属性，出现下面的图：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/9e76613ef3ab4464817213cd84bba433.png"
+                        alt="在这里插入图片描述"
+                 ><br>点击目标进行修改，需要填写正确的 Git bash.exe文件位置来启动docker star.sh文件。我的git安装在D:\Git下，Docker Toolbox安装在C盘。所以我这里写的是：</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">D:<span class="hljs-string">\Git\bin\bash.exe</span> –login -i “C:<span class="hljs-string">\Program</span> Files<span class="hljs-string">\Docker</span> Toolbox<span class="hljs-string">\start.sh”</span><br></code></pre></td></tr></table></figure>
+<p>修改完成以后Docker Quickstart Terminal就能启动了。</p>
+<h2 id="2-3啊？Hyper-V没有关干净？"><a href="#2-3啊？Hyper-V没有关干净？" class="headerlink" title="2.3	啊？Hyper-V没有关干净？"></a>2.3	啊？Hyper-V没有关干净？</h2><p>启动以后问又来了：</p>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pony"><span class="hljs-type">VBoxManage</span>.exe: <span class="hljs-keyword">error</span>: <span class="hljs-type">Raw</span>-mode <span class="hljs-keyword">is</span> unavailable courtesy of <span class="hljs-type">Hyper</span>-<span class="hljs-type">V</span>. (<span class="hljs-type">VERR_SUPDRV_NO_RAW_MODE_HYPER_V_ROOT</span>)<br><span class="hljs-type">VBoxManage</span>.exe: <span class="hljs-keyword">error</span>: <span class="hljs-type">Details</span>: code <span class="hljs-type">E_FAIL</span> (<span class="hljs-number">0x80004005</span>), component <span class="hljs-type">ConsoleWrap</span>, <span class="hljs-keyword">interface</span> <span class="hljs-type">IConsole</span><br><br></code></pre></td></tr></table></figure>
+<p>？？？<br>C友又有小妙招：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/xym222/article/details/107666290#:~:text=%E7%AC%AC%E4%B8%80%E6%AD%A5%20%EF%BC%9A%E5%85%B3%E9%97%ADHyper-V%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%8F%96%E6%B6%88%E5%8B%BE%E9%80%89%20%E7%AC%AC%E4%BA%8C%E6%AD%A5%20%EF%BC%9A%E4%BB%A5%E9%98%B2%E4%B8%87%E4%B8%80%EF%BC%8C%E5%86%8D%E6%AC%A1%E5%85%B3%E9%97%ADHyper-V%E6%9C%8D%E5%8A%A1%EF%BC%8C%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F%E6%89%93%E5%BC%80cmd%E7%AA%97%E5%8F%A3%EF%BC%9A%20%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%20bcdedit%20/set,hypervisorlaunchtype%20off%20%E7%AC%AC%E4%B8%89%E6%AD%A5%20%EF%BC%9A%E4%BF%AE%E6%94%B9%E4%BD%8D%E4%BA%8E%20C:Program%20FilesDocker%20Toolboxstart.sh%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%89%93%E5%BC%80%EF%BC%8C%E4%BF%AE%E6%94%B9%E4%B8%8B%E9%9D%A2%E8%BF%99%E4%B8%80%E8%A1%8C%EF%BC%9A" >Windows10家庭版安装Docker Toolbox后，再安装Hyper-v的血泪史以及解决方法<i class="fas fa-external-link-alt"></i></a><br>跟着这位C友我又把Hyper-V关闭，在命令提示符里也加上</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">bcdedit /<span class="hljs-keyword">set</span> hypervisorlaunchtype <span class="hljs-keyword">off</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="2-4boot2docker怎么不见了？"><a href="#2-4boot2docker怎么不见了？" class="headerlink" title="2.4	boot2docker怎么不见了？"></a>2.4	boot2docker怎么不见了？</h2><p>忙活了好一阵搞完以后，我又信心满满的启动Docker，结果<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/6dece534362c4c89913cc371b31e9553.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p>？？？好好好，这么玩是吧？<br>我能怎么办？还是找C友！<br>又找到一篇文章<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/lililuni/article/details/83243062" >Docker安装问题3<i class="fas fa-external-link-alt"></i></a><br>这里面和我遇到问题一样，我很果断的去github上下载了<a class="link"   target="_blank" rel="noopener" href="https://github.com/boot2docker/boot2docker/" >boot2docker<i class="fas fa-external-link-alt"></i></a><br>然后放在了C:\Users\libin.docker\machine\cache.的地址下，<br>再次启动，我已经不抱任何希望了，果然，还有问题。。。。。</p>
+<h2 id="2-5虚拟网卡没了？"><a href="#2-5虚拟网卡没了？" class="headerlink" title="2.5	虚拟网卡没了？"></a>2.5	虚拟网卡没了？</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">VBoxManage.exe: error: Failed <span class="hljs-built_in">to</span> <span class="hljs-built_in">create</span> <span class="hljs-keyword">the</span> host-only adapter<br></code></pre></td></tr></table></figure>
+<p>错误又有了。好好好，我再忍你最后一次，我最后找到这篇文章，然后安装了虚拟网卡。<br><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/github_38336924/article/details/106684453" >VBoxManage.exe: error<i class="fas fa-external-link-alt"></i></a></p>
+<p>最后一次启动嗷！！！<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/4964b2d5305c41068a7f01d58da16fff.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p>绷不住了，真的受不了了！！！<br>我心态炸了，短时间内是不会再想见到docker的！<br>我再卸载和重开的边缘徘徊，真的，一个小白只是想搭建一个网站而已，就在第一步搭建环境沉船了。在弥留之间（已经凌晨一点了，第二天还有早八），我又一次把问题提交给了搜索引擎，在知乎上我找到了这样一篇文章：<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/151381702" >Docker Toolbox 在windows下的安装<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="2-6VBoxManage-exe-error？重装VirtualBox！"><a href="#2-6VBoxManage-exe-error？重装VirtualBox！" class="headerlink" title="2.6	VBoxManage.exe error？重装VirtualBox！"></a>2.6	VBoxManage.exe error？重装VirtualBox！</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/fec59d2f2c9e453c912a1ac45bf15d07.png"
+                        alt="在这里插入图片描述"
+                 ><br>这里面的描述简直和我一摸一样，我再次提起最后一次精神，要是再有意外，俺就不玩了！<br>我之间跑到<a class="link"   target="_blank" rel="noopener" href="https://www.virtualbox.org/wiki/Downloads" >Oracle VM VirtualBox 的官网<i class="fas fa-external-link-alt"></i></a>选择最新的版本<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/4b0e1a030d8d42a299a66d08fcbb0a17.png"
+                        alt="在这里插入图片描述"
+                 ><br>把原先的卸载了以后，直接安装在Docker的文件夹下面，重启！<br>。。。。。。</p>
+<h2 id="2-6小鲸鱼终于来了！"><a href="#2-6小鲸鱼终于来了！" class="headerlink" title="2.6	小鲸鱼终于来了！"></a>2.6	小鲸鱼终于来了！</h2><p>我的天！我的小鲸鱼终于出来了！<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/1447a8a908b8477ebf5915a311f49c22.png"
+                        alt="在这里插入图片描述"
+                 ><br>还是不放心，我又打开了PowerShell，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker-machine <span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
+<p>打开以后发现虚拟机成功的Running了，才心满意足的关掉了电脑。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img-blog.csdnimg.cn/494fe3a3e04b4308b4e48c44eaa204d9.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p>更多命令详情请看这篇文章 ：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/yilvqingtai/article/details/114881131" >docker Toolbox使用<i class="fas fa-external-link-alt"></i></a></p>
+<p>这里面有更多有关Docker的命令以及后续镜像储存位置的改变。</p>
+
                 </div>
                 
                         
@@ -365,6 +478,14 @@
 
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/docker/">docker</a>
+                                    </li>
+                                
+                            </ul>
                         
                     </div>
                     <div>
@@ -536,7 +657,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81Docker%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">1、Docker是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81Docker-Toolbox%E7%9A%84%E8%89%B0%E9%9A%BE%E4%B9%8B%E6%97%85"><span class="nav-number">3.</span> <span class="nav-text">2、Docker Toolbox的艰难之旅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1Docker-Toolbox%E7%9A%84%E9%95%9C%E5%83%8F%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">2.1	Docker Toolbox的镜像与安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E6%80%8E%E4%B9%88%E6%89%BE%E4%B8%8D%E5%88%B0bash-exe%E4%BA%86%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">2.2	怎么找不到bash.exe了？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3%E5%95%8A%EF%BC%9FHyper-V%E6%B2%A1%E6%9C%89%E5%85%B3%E5%B9%B2%E5%87%80%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">2.3	啊？Hyper-V没有关干净？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4boot2docker%E6%80%8E%E4%B9%88%E4%B8%8D%E8%A7%81%E4%BA%86%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">2.4	boot2docker怎么不见了？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1%E6%B2%A1%E4%BA%86%EF%BC%9F"><span class="nav-number">3.5.</span> <span class="nav-text">2.5	虚拟网卡没了？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6VBoxManage-exe-error%EF%BC%9F%E9%87%8D%E8%A3%85VirtualBox%EF%BC%81"><span class="nav-number">3.6.</span> <span class="nav-text">2.6	VBoxManage.exe error？重装VirtualBox！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6%E5%B0%8F%E9%B2%B8%E9%B1%BC%E7%BB%88%E4%BA%8E%E6%9D%A5%E4%BA%86%EF%BC%81"><span class="nav-number">3.7.</span> <span class="nav-text">2.6	小鲸鱼终于来了！</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -582,7 +703,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">4.7k</span>
+                    <span class="item-value border-box word">6.5k</span>
                 </span>
             
 
@@ -725,7 +846,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81Docker%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">1、Docker是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81Docker-Toolbox%E7%9A%84%E8%89%B0%E9%9A%BE%E4%B9%8B%E6%97%85"><span class="nav-number">3.</span> <span class="nav-text">2、Docker Toolbox的艰难之旅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1Docker-Toolbox%E7%9A%84%E9%95%9C%E5%83%8F%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">2.1	Docker Toolbox的镜像与安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E6%80%8E%E4%B9%88%E6%89%BE%E4%B8%8D%E5%88%B0bash-exe%E4%BA%86%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">2.2	怎么找不到bash.exe了？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3%E5%95%8A%EF%BC%9FHyper-V%E6%B2%A1%E6%9C%89%E5%85%B3%E5%B9%B2%E5%87%80%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">2.3	啊？Hyper-V没有关干净？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4boot2docker%E6%80%8E%E4%B9%88%E4%B8%8D%E8%A7%81%E4%BA%86%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">2.4	boot2docker怎么不见了？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1%E6%B2%A1%E4%BA%86%EF%BC%9F"><span class="nav-number">3.5.</span> <span class="nav-text">2.5	虚拟网卡没了？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6VBoxManage-exe-error%EF%BC%9F%E9%87%8D%E8%A3%85VirtualBox%EF%BC%81"><span class="nav-number">3.6.</span> <span class="nav-text">2.6	VBoxManage.exe error？重装VirtualBox！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6%E5%B0%8F%E9%B2%B8%E9%B1%BC%E7%BB%88%E4%BA%8E%E6%9D%A5%E4%BA%86%EF%BC%81"><span class="nav-number">3.7.</span> <span class="nav-text">2.6	小鲸鱼终于来了！</span></a></li></ol></li></ol>
     </div>
 </div>
 
