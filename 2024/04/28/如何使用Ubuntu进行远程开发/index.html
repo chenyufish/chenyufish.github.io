@@ -272,7 +272,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Apr 29 2024 00:38:53 GMT+0800">2024 年 04 月 29 日 00:38:53</span>
+                <span class="datetime" data-updated="Mon Apr 29 2024 16:32:24 GMT+0800">2024 年 04 月 29 日 16:32:24</span>
             </span>
         
 
@@ -300,6 +300,9 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/java/">java</a></li>
                         
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IDEA/">IDEA</a></li>
+                        
+                    
                 </ul>
             </span>
         
@@ -307,12 +310,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>590 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.7k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span>
             </span>
         
         
@@ -524,10 +527,252 @@
                  >
 
 <p>然后就是等待Ubuntu初始化完成即可</p>
-<h2 id="远程开发"><a href="#远程开发" class="headerlink" title="远程开发"></a>远程开发</h2><p>这里与两者方法，一种是远程部署，一种是基于IDEA的远程开发</p>
+<h2 id="远程开发"><a href="#远程开发" class="headerlink" title="远程开发"></a>远程开发</h2><p>这里有两者方法，一种是远程部署，一种是基于IDEA的远程开发</p>
+<p>还是先进行环境配置，首先在你的Ubuntu里面打开终端（Ctrl+Alt+T）</p>
+<p>输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ifconfig<br></code></pre></td></tr></table></figure>
+
+<p>查看你的本机的IP地址，如果识别不出这个命令，就输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install net-tools<br></code></pre></td></tr></table></figure>
+
+<p>安装一个网络工具，再次输入ifconfig</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429143648700.png"
+                        class=""
+                 >
+
+<p>这就是你的虚拟机ip地址，在window桌面使用win+R打开命令提示符，使用ping命令检测能否连接上虚拟机（记得改成nideIP地址）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ping 192.168.159.128<br></code></pre></td></tr></table></figure>
+
+<p>出现这个就是正常连接成功</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429143851422.png"
+                        class=""
+                 >
+
+<p>或者直接在Ubuntu里面按一下win键，输入IP找到网络，点开有线连接的详情</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429144136894.png"
+                        class=""
+                 >
+
+<p>因为远程连接还要涉及到SSH协议，我们还要安装ssh服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get install openssh-server<br></code></pre></td></tr></table></figure>
+
+<p>安装完以后输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps -ef | grep ssh<br></code></pre></td></tr></table></figure>
+
+<p>出现这样的画面就是ssh’服务开启成功</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429144631718.png"
+                        class=""
+                 >
+
+<p>如果终端命令太多就使用Ctrl+C清理屏幕</p>
+<p>接下来安装一下我们的开发工具JDK8和Maven</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install openjdk-8-jdk<br>sudo apt install maven<br></code></pre></td></tr></table></figure>
+
+<p>装完以后输入java -version和mvn -version查看版本号，能成功显示就说明安装成功</p>
 <ol>
-<li>远程部署，就是把本地IDEA的文件放到Ubuntu上，每次更改就把本地同步到Ubuntu</li>
+<li>远程部署，就是把本地IDEA的文件放到Ubuntu上，每次更改就把本地同步到Ubuntu（不是真正意思上的远程开发，所以提倡第二种方法）</li>
 </ol>
+<p>首先进入IDEA，找到工具打开部署</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429145839579.png"
+                        class=""
+                 >
+
+<p>点击配置，然后点加号选择SFTP，新建一个远程服务器</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429150010648.png"
+                        class=""
+                 >
+
+<p>名字就叫Ubuntu吧</p>
+<p>进入以后点击SSH配置</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429150225891.png"
+                        class=""
+                 >
+
+<p>点击加号把你的Ubuntu虚拟机添加进来</p>
+<p>host就是你的虚拟主机的ip地址，username就是Ubuntu的账户名，password就是你的账户密码，点击测试连接，出现连接成功就可以了</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429150546427.png"
+                        class=""
+                 >
+
+<p>完成以后点击工具点击部署，找到浏览远程主机就能看到你的Ubuntu上的文件了</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429150857912.png"
+                        class=""
+                 >
+
+<p>接着再你的文件夹下面新建一个code目录，这就是在Ubuntu上放代码的目录</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429151136540.png"
+                        class=""
+                 >
+
+<p>接着打开工具里面的部署，点击配置看到我们的Ubuntu，点击映射，把你本地目录下的文件同步到刚才新建的code里面</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429151341826.png"
+                        class=""
+                 >
+
+<p>回到Ubuntu，cd进入code目录，ls一下，里面是空的</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429151537220.png"
+                        class=""
+                 >
+
+<p>然后到本地IDEA点击文件根目录，点击部署，点击同步</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429151853723.png"
+                        class=""
+                 >
+
+<p>IDEA就会列举出所有Ubuntu没有的文件，我们点击同步再去Ubuntu看看有没有同步成功</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429152104116.png"
+                        class=""
+                 >
+
+<p>再次使用ls，就可以看到我们的文件都已经同步过来了</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429152217792.png"
+                        class=""
+                 >
+
+<p>再回到IDEA里面设置一下自动同步就行</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429152400768.png"
+                        class=""
+                 >
+
+<p>在本地IDEA里面连接上我们的Ubuntu，cd进入code目录，使用maven命令让项目运行起来</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429152622366.png"
+                        class=""
+                 >
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429152740745.png"
+                        class=""
+                 >
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429152900341.png"
+                        class=""
+                 >
+
+<p>等待项目依赖在Ubuntu上安装完毕就可以启动项目了，如果要发布项目，就要使用mvn package命令打一个jar包</p>
+<p>看到build success 就说明jar包构建好以后</p>
+<p>回到Ubuntu用ls就可以看到我的刚打好的jar包了</p>
+<p>使用jar命令就能成功部署了，包名记得改成你的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java -jar /home/fishman/code/target/spring-init-master-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod<br></code></pre></td></tr></table></figure>
+
+<p>接着是如何进行调试，点击这里新建一套配置</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429155559142.png"
+                        class=""
+                 >
+
+<p>点击左上角的加号找到远程调试</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429155639215.png"
+                        class=""
+                 >
+
+<p>填写信息，host就是Ubuntu的IP地址  把命令参数加到jar命令之前，注音端口号不要冲突，冲突就换一个</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar /home/fishman/code/target/spring-init-master-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod<br></code></pre></td></tr></table></figure>
+
+
+
+<p>这样以后再点击项目的Debug就可以进入debug模式了</p>
+<p>以上就是远程部署的同步、运行、部署、调试了，但不是很方便，建议使用下一种方法</p>
+<ol start="2">
+<li>远程开发</li>
+</ol>
+<p>进入IDEA的欢迎界面，找到远程开发的SSH</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429160609081.png"
+                        class=""
+                 >
+
+<p>新建一个，连接，填上Ubuntu的账户名和密码</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429160748557.png"
+                        class=""
+                 >
+
+<p>然后选择IDEA版本和安装地址，点击下载链接，就会在Ubuntu上构建远程开发环境了（这种方法对远程服务器的内存有一点要求）</p>
+<p>等待客户端安装完成以后就自动打开code的远程目录了</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429161849884.png"
+                        class=""
+                 >
+
+<p>这里有个小问题，就是点击debug的时候会报错</p>
+<p>我们找到文件，点击设置，找到compile里面的VMoptions，加上一条参数就可以了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">-Djdk.lang.Process.launchMechanism=vfork<br></code></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/04/28/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Ubuntu%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/image-20240429162445479.png"
+                        class=""
+                 >
+
+<p>就这么简单，就实现了在远程进行开发，像在本地一样运行远程项目</p>
 
                 </div>
                 
@@ -601,6 +846,10 @@
                                 
                                     <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/java/">java</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/IDEA/">IDEA</a>
                                     </li>
                                 
                             </ul>
@@ -805,7 +1054,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">6.5k</span>
+                    <span class="item-value border-box word">7.6k</span>
                 </span>
             
 
