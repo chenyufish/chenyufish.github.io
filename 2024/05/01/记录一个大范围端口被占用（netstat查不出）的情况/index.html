@@ -9,7 +9,7 @@
     
     <title>
         
-            记录一个JDK8点击安装以后没反应的问题 |
+            记录一个大范围端口被占用（netstat查不出）的情况 |
         
         Fishman的小池塘
     </title>
@@ -239,7 +239,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        记录一个JDK8点击安装以后没反应的问题
+                        记录一个大范围端口被占用（netstat查不出）的情况
                     </div>
                 
 
@@ -267,12 +267,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-star"></i>&nbsp;
-                <span class="datetime">2024 年 05 月 01 日 13:04:58</span>
+                <span class="datetime">2024 年 05 月 01 日 21:41:10</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                <span class="datetime" data-updated="Wed May 01 2024 13:09:52 GMT+0800">2024 年 05 月 01 日 13:09:52</span>
+                <span class="datetime" data-updated="Thu May 02 2024 00:56:45 GMT+0800">2024 年 05 月 02 日 00:56:45</span>
             </span>
         
 
@@ -280,7 +280,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/Java/">Java</a></li>
+                            <li class="category-item"><a href="/categories/Daily/">Daily</a></li>
                         
                     
                 </ul>
@@ -291,10 +291,13 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/java/">java</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/8080/">8080</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/JDK-8/">JDK 8</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/netstat/">netstat</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Tomcat/">Tomcat</a></li>
                         
                     
                 </ul>
@@ -304,12 +307,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>54 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>569 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
             </span>
         
         
@@ -330,15 +333,48 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="记录一个安装JDK-8时点击下一步没反应的问题"><a href="#记录一个安装JDK-8时点击下一步没反应的问题" class="headerlink" title="记录一个安装JDK 8时点击下一步没反应的问题"></a>记录一个安装JDK 8时点击下一步没反应的问题</h1><p>官网下载JDK 8：<a class="link"   target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/" >Java Downloads | Oracle<i class="fas fa-external-link-alt"></i></a></p>
-<p>往下拉就能看到Java 8，点击window下载即可</p>
-<p>或者点击这里下载JDK 8u411：</p>
-<p><img  
+                    <h1 id="记录一个端口被大范围占用而且使用netstat查不到的现象"><a href="#记录一个端口被大范围占用而且使用netstat查不到的现象" class="headerlink" title="记录一个端口被大范围占用而且使用netstat查不到的现象"></a>记录一个端口被大范围占用而且使用netstat查不到的现象</h1><h2 id="事故发生"><a href="#事故发生" class="headerlink" title="事故发生"></a>事故发生</h2><p>我今天打开IDEA运行项目的时候总是报错显示端口已经被占用，要求我换一个端口，然后我就使用常规手段，准备使用netstat查一下然后把他kill掉，但是很神奇，我换了很多端口都提示被占用，但使用netstat -ano 命令和netstat -ano  | findstr 8080都查不到端口被占用，我就感觉有点不对劲，一开始我以为是虚拟机搞得，但找不到解决方法，在百度上折腾一会就好了，写一篇文章记录一下</p>
+<h2 id="事故背景"><a href="#事故背景" class="headerlink" title="事故背景"></a>事故背景</h2><ol>
+<li>Windows 中有一个「TCP 动态端口范围」，处在这个范围内的端口，有时候会被一些服务占用。在 Windows Vista（或 Windows Server 2008）之前，动态端口范围是 1025 到 5000；在 Windows Vista（或 Windows Server 2008）之后，新的默认起始端口为 49152，新的默认结束端口为 65535。</li>
+<li>如果安装了 Hyper-V，那么 Hyper-V 会为容器宿主网络服务（Windows Container Host Networking Service）随机保留一些端口号使用。</li>
+</ol>
+<p>好家伙，我就是安装并启用了Hyper-V。。。</p>
+<p>正常情况下，Hyper-V 虽然会在「TCP 动态端口范围」中随机挑一些端口号保留（占用），不过保留的端口号普遍比较大，就算保留几百、几千个也影响不大。但是，Windows 自动更新有时会出错，导致这个范围的起始端口被重置为 1024……这可就麻烦了，一些常用端口动不动就因为被保留而无法使用了。</p>
+<p>输入这个命令一看，好家伙果然是1024</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">netsh int ipv4 show dynamicport tcp<br></code></pre></td></tr></table></figure>
+
+<img  
                        lazyload
                        alt="image"
-                       data-src="G:\java_projects\java_project\MyHexo\source_posts\记录一个JDK8点击安装以后没反应的问题\image-20240501130711093.png"
-                        alt="image-20240501130711093"
-                 ></p>
+                       data-src="/2024/05/01/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%A4%A7%E8%8C%83%E5%9B%B4%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%EF%BC%88netstat%E6%9F%A5%E4%B8%8D%E5%87%BA%EF%BC%89%E7%9A%84%E6%83%85%E5%86%B5/image-20240502002828231.png"
+                        class=""
+                 >
+
+<p>再输入这个命令，果然是动态端口占用，而且是把我常用的端口一口气全占了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">netsh int ipv4 show excludedportrange protocol=tcp<br></code></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%A4%A7%E8%8C%83%E5%9B%B4%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%EF%BC%88netstat%E6%9F%A5%E4%B8%8D%E5%87%BA%EF%BC%89%E7%9A%84%E6%83%85%E5%86%B5/image-20240502002048298.png"
+                        class=""
+                 >
+
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>手动设置一下动态征用的范围，尽量大一点，不寻常一点</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">netsh int ipv4 set dynamic tcp start=49152 num=16384<br>netsh int ipv6 set dynamic tcp start=49152 num=16384<br></code></pre></td></tr></table></figure>
+
+<p>然后重启一下电脑，再次输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">netsh int ipv4 show excludedportrange protocol=tcp<br></code></pre></td></tr></table></figure>
+
+<p>就发现端口以及被释放了</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%A4%A7%E8%8C%83%E5%9B%B4%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%EF%BC%88netstat%E6%9F%A5%E4%B8%8D%E5%87%BA%EF%BC%89%E7%9A%84%E6%83%85%E5%86%B5/image-20240502003428356.png"
+                        class=""
+                 >
+
+<p>再次使用8080、8123、8888就不会报错了</p>
 
                 </div>
                 
@@ -347,11 +383,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                记录一个JDK8点击安装以后没反应的问题
+                记录一个大范围端口被占用（netstat查不出）的情况
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/05/01/记录一个JDK8点击安装以后没反应的问题/
+                2024/05/01/记录一个大范围端口被占用（netstat查不出）的情况/
             </div>
         </div>
 
@@ -367,7 +403,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-05-01 13:04</div>
+                <div class="content">2024-05-01 21:41</div>
             </div>
 
 
@@ -403,11 +439,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/java/">java</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/8080/">8080</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/JDK-8/">JDK 8</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/netstat/">netstat</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Tomcat/">Tomcat</a>
                                     </li>
                                 
                             </ul>
@@ -446,31 +486,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/05/01/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%A4%A7%E8%8C%83%E5%9B%B4%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%EF%BC%88netstat%E6%9F%A5%E4%B8%8D%E5%87%BA%EF%BC%89%E7%9A%84%E6%83%85%E5%86%B5/"
-                                   title="记录一个大范围端口被占用（netstat查不出）的情况"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">记录一个大范围端口被占用（netstat查不出）的情况</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/"
-                                   title="Eclipse安装和配置（含汉化）"
+                                   href="/2024/05/01/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAJDK8%E7%82%B9%E5%87%BB%E5%AE%89%E8%A3%85%E4%BB%A5%E5%90%8E%E6%B2%A1%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/"
+                                   title="记录一个JDK8点击安装以后没反应的问题"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Eclipse安装和配置（含汉化）</span>
+                                        <span class="post-nav-title-item text-ellipsis">记录一个JDK8点击安装以后没反应的问题</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -582,7 +606,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%AE%89%E8%A3%85JDK-8%E6%97%B6%E7%82%B9%E5%87%BB%E4%B8%8B%E4%B8%80%E6%AD%A5%E6%B2%A1%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">记录一个安装JDK 8时点击下一步没反应的问题</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%A4%A7%E8%8C%83%E5%9B%B4%E5%8D%A0%E7%94%A8%E8%80%8C%E4%B8%94%E4%BD%BF%E7%94%A8netstat%E6%9F%A5%E4%B8%8D%E5%88%B0%E7%9A%84%E7%8E%B0%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">记录一个端口被大范围占用而且使用netstat查不到的现象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E6%95%85%E5%8F%91%E7%94%9F"><span class="nav-number">1.1.</span> <span class="nav-text">事故发生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E6%95%85%E8%83%8C%E6%99%AF"><span class="nav-number">1.2.</span> <span class="nav-text">事故背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -771,7 +795,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%AE%89%E8%A3%85JDK-8%E6%97%B6%E7%82%B9%E5%87%BB%E4%B8%8B%E4%B8%80%E6%AD%A5%E6%B2%A1%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">记录一个安装JDK 8时点击下一步没反应的问题</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%A4%A7%E8%8C%83%E5%9B%B4%E5%8D%A0%E7%94%A8%E8%80%8C%E4%B8%94%E4%BD%BF%E7%94%A8netstat%E6%9F%A5%E4%B8%8D%E5%88%B0%E7%9A%84%E7%8E%B0%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">记录一个端口被大范围占用而且使用netstat查不到的现象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E6%95%85%E5%8F%91%E7%94%9F"><span class="nav-number">1.1.</span> <span class="nav-text">事故发生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E6%95%85%E8%83%8C%E6%99%AF"><span class="nav-number">1.2.</span> <span class="nav-text">事故背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol>
     </div>
 </div>
 
