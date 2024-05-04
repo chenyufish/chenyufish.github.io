@@ -272,7 +272,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                <span class="datetime" data-updated="Wed May 01 2024 13:20:40 GMT+0800">2024 年 05 月 01 日 13:20:40</span>
+                <span class="datetime" data-updated="Sat May 04 2024 17:34:38 GMT+0800">2024 年 05 月 04 日 17:34:38</span>
             </span>
         
 
@@ -291,13 +291,13 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/java/">java</a></li>
-                        
-                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/eclipse/">eclipse</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%B1%89%E5%8C%96/">汉化</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/java/">java</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/javaEE/">javaEE</a></li>
@@ -310,12 +310,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>46 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>872 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
             </span>
         
         
@@ -336,14 +336,194 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="Eclipse的安装和配置（含汉化）"><a href="#Eclipse的安装和配置（含汉化）" class="headerlink" title="Eclipse的安装和配置（含汉化）"></a>Eclipse的安装和配置（含汉化）</h1><p>我是用Java 8来构建项目的，所以不是官网的最新版</p>
-<p>最后一版支持JDK1.8（Java 8）：<a class="link"   target="_blank" rel="noopener" href="https://www.eclipse.org/downloads/packages/release/2020-06/r" >2020-06 R | Eclipse Packages<i class="fas fa-external-link-alt"></i></a></p>
-<p><img  
+                    <h1 id="Eclipse的安装和配置（含汉化）"><a href="#Eclipse的安装和配置（含汉化）" class="headerlink" title="Eclipse的安装和配置（含汉化）"></a>Eclipse的安装和配置（含汉化）</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>我是用Java 8来构建项目的，所以不能安装官网的最新版，最新版只支持java17</p>
+<p>最后一版支持JDK1.8（Java 8）：[2020-06 R | Eclipse Packages.png(<a class="link"   target="_blank" rel="noopener" href="https://www.eclipse.org/downloads/packages/release/2020-06/r" >https://www.eclipse.org/downloads/packages/release/2020-06/r<i class="fas fa-external-link-alt"></i></a>)</p>
+<img  
                        lazyload
                        alt="image"
-                       data-src="G:\java_projects\java_project\MyHexo\source_posts\Eclipse安装和配置（含汉化）\image-20240501114243966.png"
-                        alt="image-20240501114243966"
-                 ></p>
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240501114243966.png"
+                        class=""
+                 >
+
+<p>下载完以后直接解压，找到目录下的exe运行就行了即可</p>
+<h2 id="配置中文"><a href="#配置中文" class="headerlink" title="配置中文"></a>配置中文</h2><p>进来以后，因为我喜欢看中文界面，所以还要去插件中心搞一个中文环境</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504162431579.png"
+                        class=""
+                 >
+
+<p>进入到这里，点击add新增一个应用，名字就叫language</p>
+<p>在location里面粘贴这个</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">https://download.eclipse.org/technology/babel/update-site/R0.19.0/2021-06/<br></code></pre></td></tr></table></figure>
+
+<p>等待他加载完毕，选择chinese再next进行了（可能安装有点慢），重启进来就是中文界面</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504162748965.png"
+                        class=""
+                 >
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504162606978.png"
+                        class=""
+                 >
+
+<p>另一种配置中文语言包的可以去这里学习：[Eclipse 的中文简体版安装教程「建议收藏」-腾讯云开发者社区-腾讯云 (tencent.com).png(<a class="link"   target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2063019" >https://cloud.tencent.com/developer/article/2063019<i class="fas fa-external-link-alt"></i></a>)</p>
+<h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><p>如果是第一次进来，Eclipse会让你选择工作空间，就是你代码保存到地方</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504163134392.png"
+                        class=""
+                 >
+
+<p>选择完以后就要配置你的代码环境了</p>
+<p>接下来进入窗口的首选项</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504163623998.png"
+                        class=""
+                 >
+
+<p>常规里面可以换主题，工作环境换utf8编码，你也不想你的注释乱码吧</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504163729172.png"
+                        class=""
+                 >
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504164111356.png"
+                        class=""
+                 >
+
+<p>接着选择你的java版本</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504164205729.png"
+                        class=""
+                 >
+
+<p>理论上来说到这里Eclipse就可以进行基础使用了</p>
+<p>让我们新建一个project吧</p>
+<p>找到文件点击新建，点击java项目，选择你的运行环境</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504165029871.png"
+                        class=""
+                 >
+
+<p>点击下一步就来到了构建配置</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504165226520.png"
+                        class=""
+                 >
+
+<p>这里可以为你的项目引入库和服务器，当然helloworld不需要这些，点击完成就行，接下来选择打开透视</p>
+<p>完成以后找到我们新建的项目，右键新建一个java类</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504165519579.png"
+                        class=""
+                 >
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/file_1714813408589_970.png"
+                        class=""
+                 >
+
+<p>然后在这个类里面编写一个helloworld</p>
+<p>当我们写public的时候竟然发现Eclipse竟然不会代码提示？其实是没设置好，还是点击窗口进入首选项，找到java的这里</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504170508360.png"
+                        class=""
+                 >
+
+<p>在自动激活里面输入26个字母（不区分大小写），激活延迟设置为2ms就行，然后点击应用关闭窗口回到代码界面，发现现在就有代码提示了</p>
+<p>输入我们的经典helloworld，右键这个java类文件点击运行，选择java应用程序</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504171209486.png"
+                        class=""
+                 >
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504172504413.png"
+                        class=""
+                 >
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504171218422.png"
+                        class=""
+                 >
+
+<p>？？？这是怎么回事呢？</p>
+<p>我们还缺少一步设置，还是点击窗口找到首选项，找到这里设置为始终就行了</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504172158181.png"
+                        class=""
+                 >
+
+<p>调整完以后再次运行，成功</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504172555846.png"
+                        class=""
+                 >
+
+<p>如果你要运行一个网页项目，前提是你要有Tomcat，右键项目选择运行在服务器，构建路径是很重要的配置方法</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504164702525.png"
+                        class=""
+                 >
+
+<p>在这里面你可以引入你的jar包和配置项目运行和java环境和tomcat</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504164820455.png"
+                        class=""
+                 >
+
+<p>选择文件夹，在右边点击添加或者编辑来实现对应 的效果</p>
+<h2 id="配置完成"><a href="#配置完成" class="headerlink" title="配置完成"></a>配置完成</h2><h1 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h1><p>我运行的时候出现了这个错误（忘了截图了，去找了一张，大概是这样吧）</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2024/05/01/Eclipse%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89/image-20240504161508479.png"
+                        class=""
+                 >
+
+<p>我很疑惑，明明我记得装的是java8，结果去到java的安装目录一看，确实是java8，但是另一个目录下竟然装了java17？？？？</p>
+<p>我是一脸懵逼的，只好把所有java的jdk全部卸载，重新安装java8和jre并且在系统环境里面重新配置以后才能打开</p>
 
                 </div>
                 
@@ -408,15 +588,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/java/">java</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/eclipse/">eclipse</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%B1%89%E5%8C%96/">汉化</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/java/">java</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
@@ -595,7 +775,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Eclipse的安装和配置（含汉化）</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Eclipse的安装和配置（含汉化）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%87"><span class="nav-number">1.2.</span> <span class="nav-text">配置中文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90"><span class="nav-number">1.4.</span> <span class="nav-text">配置完成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">问题记录</span></a></li></ol>
     </div>
 </div>
 
@@ -641,7 +821,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">8.6k</span>
+                    <span class="item-value border-box word">9.4k</span>
                 </span>
             
 
@@ -784,7 +964,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Eclipse的安装和配置（含汉化）</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%90%AB%E6%B1%89%E5%8C%96%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Eclipse的安装和配置（含汉化）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%87"><span class="nav-number">1.2.</span> <span class="nav-text">配置中文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90"><span class="nav-number">1.4.</span> <span class="nav-text">配置完成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">问题记录</span></a></li></ol>
     </div>
 </div>
 
