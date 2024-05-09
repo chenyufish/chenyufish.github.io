@@ -9,7 +9,7 @@
     
     <title>
         
-            记录一个前端使用Axios传输数据，后端request拿不到的错误 |
+            记录一个后端返回id前端精度缺失问题 |
         
         Fishman的小池塘
     </title>
@@ -239,7 +239,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        记录一个前端使用Axios传输数据，后端request拿不到的错误
+                        记录一个后端返回id前端精度缺失问题
                     </div>
                 
 
@@ -267,12 +267,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-star"></i>&nbsp;
-                <span class="datetime">2024 年 05 月 08 日 23:34:39</span>
+                <span class="datetime">2024 年 05 月 10 日 00:22:25</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                <span class="datetime" data-updated="Wed May 08 2024 23:36:40 GMT+0800">2024 年 05 月 08 日 23:36:40</span>
+                <span class="datetime" data-updated="Fri May 10 2024 00:28:23 GMT+0800">2024 年 05 月 10 日 00:28:23</span>
             </span>
         
 
@@ -291,10 +291,13 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Axios/">Axios</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/axios/">axios</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/vue/">vue</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/JavaScript/">JavaScript</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1/">精度丢失</a></li>
                         
                     
                 </ul>
@@ -304,7 +307,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>78 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>220 字</span>
             </span>
         
         
@@ -330,7 +333,16 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="记录一个前端使用Axios传输数据，后端request拿不到的错误"><a href="#记录一个前端使用Axios传输数据，后端request拿不到的错误" class="headerlink" title="记录一个前端使用Axios传输数据，后端request拿不到的错误"></a>记录一个前端使用Axios传输数据，后端request拿不到的错误</h1><p>很简单，检查你的前端发过来的postDate，变量名字一定要和你的实体名一样，否则就会无法匹配导致前端是完整数据，后端debug发的时候拿不到</p>
+                    <h1 id="记录一个后端返回id前端精度缺失问题"><a href="#记录一个后端返回id前端精度缺失问题" class="headerlink" title="记录一个后端返回id前端精度缺失问题"></a>记录一个后端返回id前端精度缺失问题</h1><p>我的后端的数据库使用的是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@TableId(type = IdType.ASSIGN_ID)</span><br>    <span class="hljs-keyword">private</span> Long id;<br></code></pre></td></tr></table></figure>
+
+<p>前端是</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> myAxios.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/machine/add&quot;</span>, postData);<br> <span class="hljs-keyword">if</span> (res?.<span class="hljs-property">data</span>.<span class="hljs-property">code</span> === <span class="hljs-number">0</span>) &#123;<br>   <span class="hljs-title function_">showSuccessToast</span>(<span class="hljs-string">&quot;添加成功&quot;</span>);<br>   <span class="hljs-keyword">const</span> machineIdStr=<span class="hljs-title class_">String</span>(res.<span class="hljs-property">data</span>.<span class="hljs-property">data</span>);<br>   location.<span class="hljs-property">href</span>=<span class="hljs-string">`/after/machine?id=<span class="hljs-subst">$&#123;machineIdStr&#125;</span>`</span>;<br></code></pre></td></tr></table></figure>
+
+<p>如果直接拼接的话会因为id比较长，导致返回给前端的时候发现总是和res.data里面拿到的id不一样，查百度才知道：</p>
+<p>在JavaScript中，最大安全的整数值可以通过 <code>Number.MAX_SAFE_INTEGER</code> 来表示，它的值是 <code>9007199254740991</code>。如果 <code>Id</code> 的值超过了这个范围，JavaScript可能无法精确表示这个数字，导致精度丢失或不准确的问题。</p>
+<p>很明显我的就是这个问题</p>
+<p>解决方法也很简单，就是拿到Id以后用String进行处理再使用</p>
 
                 </div>
                 
@@ -339,11 +351,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                记录一个前端使用Axios传输数据，后端request拿不到的错误
+                记录一个后端返回id前端精度缺失问题
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/05/08/记录一个前端使用Axios传输数据，后端request拿不到的错误/
+                2024/05/10/记录一个后端返回id前端精度缺失问题/
             </div>
         </div>
 
@@ -359,7 +371,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-05-08 23:34</div>
+                <div class="content">2024-05-10 00:22</div>
             </div>
 
 
@@ -395,11 +407,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Axios/">Axios</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/axios/">axios</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/vue/">vue</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/JavaScript/">JavaScript</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1/">精度丢失</a>
                                     </li>
                                 
                             </ul>
@@ -438,31 +454,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/05/10/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9Eid%E5%89%8D%E7%AB%AF%E7%B2%BE%E5%BA%A6%E7%BC%BA%E5%A4%B1%E9%97%AE%E9%A2%98/"
-                                   title="记录一个后端返回id前端精度缺失问题"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">记录一个后端返回id前端精度缺失问题</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/05/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E4%BD%BF%E7%94%A8Mybatisplus%E7%9A%84%E5%B0%8F%E6%84%8F%E5%A4%96/"
-                                   title="记录一个使用Mybatisplus的小意外"
+                                   href="/2024/05/08/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%89%8D%E7%AB%AF%E4%BD%BF%E7%94%A8Axios%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%90%8E%E7%AB%AFrequest%E6%8B%BF%E4%B8%8D%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/"
+                                   title="记录一个前端使用Axios传输数据，后端request拿不到的错误"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">记录一个使用Mybatisplus的小意外</span>
+                                        <span class="post-nav-title-item text-ellipsis">记录一个前端使用Axios传输数据，后端request拿不到的错误</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -574,7 +574,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%89%8D%E7%AB%AF%E4%BD%BF%E7%94%A8Axios%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%90%8E%E7%AB%AFrequest%E6%8B%BF%E4%B8%8D%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">1.</span> <span class="nav-text">记录一个前端使用Axios传输数据，后端request拿不到的错误</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9Eid%E5%89%8D%E7%AB%AF%E7%B2%BE%E5%BA%A6%E7%BC%BA%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">记录一个后端返回id前端精度缺失问题</span></a></li></ol>
     </div>
 </div>
 
@@ -763,7 +763,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%89%8D%E7%AB%AF%E4%BD%BF%E7%94%A8Axios%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%90%8E%E7%AB%AFrequest%E6%8B%BF%E4%B8%8D%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">1.</span> <span class="nav-text">记录一个前端使用Axios传输数据，后端request拿不到的错误</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9Eid%E5%89%8D%E7%AB%AF%E7%B2%BE%E5%BA%A6%E7%BC%BA%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">记录一个后端返回id前端精度缺失问题</span></a></li></ol>
     </div>
 </div>
 
